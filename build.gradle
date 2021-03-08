@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'biz.aQute.bnd.builder' version '4.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+jar {
+    project.version '1.0.0'
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.osgi/org.osgi.annotation.versioning
+    compileOnly group: 'org.osgi', name: 'org.osgi.annotation.versioning', version: '1.1.1'
+
+}

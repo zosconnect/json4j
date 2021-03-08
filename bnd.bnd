@@ -1,0 +1,4 @@
+Bundle-Name: JSON4J
+Bundle-SymbolicName: com.ibm.json4j
+Export-Package: com.ibm.json, com.ibm.json.java, com.ibm.json.xml
+Private-Package: com.ibm.json.java.internal, com.ibm.json.xml.internal 
