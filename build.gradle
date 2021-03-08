@@ -30,6 +30,15 @@ tasks.test {
 }
 
 publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.ibm.zosconnect'
+            artifactId = 'json4j'
+            version = '1.0.0'
+
+            from components.java
+        }
+    }
   repositories {
     maven {
       name = "GitHubPackages"
