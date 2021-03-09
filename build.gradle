@@ -14,7 +14,7 @@ java {
 }
 
 jar {
-    project.version '1.0.0'
+    project.version '2.0.0'
 }
 
 dependencies {
@@ -34,7 +34,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.ibm.zosconnect'
             artifactId = 'json4j'
-            version = '1.0.0'
+            version = '2.0.0'
 
             from components.java
         }
