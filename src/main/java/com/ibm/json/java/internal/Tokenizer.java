@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.PushbackReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
  * Tokenizes a stream into JSON tokens.
@@ -301,7 +303,7 @@ public class Tokenizer {
 
         try {
             if (-1 != string.indexOf('.')) {
-                return Double.valueOf(string);
+                return new BigDecimal(string);
             }
 
             String sign = "";
@@ -311,11 +313,11 @@ public class Tokenizer {
             }
 
             if (string.toUpperCase().startsWith("0X")) {
-                return Long.valueOf(sign + string.substring(2), 16);
+                return new BigInteger(sign + string.substring(2), 16);
             }
 
             if (string.equals("0")) {
-                return Long.valueOf(0);
+                return BigInteger.ZERO;
             }
 
             /**
@@ -323,14 +325,14 @@ public class Tokenizer {
              * Exponentials should be treated as Doubles.
              */
             if (string.indexOf("e") != -1 || string.indexOf("E") != -1) {
-                return Double.valueOf(sign + string);
+                return new BigDecimal(sign + string);
             }
 
             if (string.startsWith("0") && string.length() > 1) {
-                return Long.valueOf(sign + string.substring(1), 8);
+                return new BigInteger(sign + string.substring(1), 8);
             }
 
-            return Long.valueOf(sign + string, 10);
+            return new BigInteger(sign + string, 10);
         } catch (NumberFormatException e) {
             IOException iox = new IOException("Invalid number literal " + onLineCol(l, c));
             iox.initCause(e);

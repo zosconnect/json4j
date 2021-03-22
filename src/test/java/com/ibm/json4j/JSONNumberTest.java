@@ -25,7 +25,7 @@ public class JSONNumberTest {
      * Test that a whole number larger than a 64bit whole number can be parsed.
      * @throws IOException If there is an error parsing the JSON
      */
-    //@Test
+    @Test
     public void testLargeWholeNumber() throws IOException {
         String inputJson = "{\"number\":18446744073709551615}";
 
@@ -64,7 +64,7 @@ public class JSONNumberTest {
      * Test that a decimal number larger than a Java double can be parsed
      * @throws IOException If there is an error parsing the JSON
      */
-    //@Test
+    @Test
     public void testLargeDecimalNumber() throws IOException {
         String inputJson = "{\"number\":2.0e500}";
 
