@@ -19,7 +19,7 @@ public class DuplicateTagTest {
             JSONObject obj = JSONObject.parse(inputJson);
             fail("Exception should have been thrown");
         } catch (IllegalArgumentException e) {
-            assertEquals("duplicate key", e.getMessage());
+            assertEquals("duplicate key \'duplicate\'", e.getMessage());
         }
     }
 

@@ -235,7 +235,7 @@ public class JSONObject extends HashMap  implements JSONArtifact
     {
         if (null == key) throw new IllegalArgumentException("key must not be null");
         if (!(key instanceof String)) throw new IllegalArgumentException("key must be a String");
-        if (get(key) != null) throw new IllegalArgumentException("duplicate key");
+        if (get(key) != null) throw new IllegalArgumentException("duplicate key \'" + key + "\'");
 
         if (!isValidObject(value))
         {
