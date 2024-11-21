@@ -16,10 +16,10 @@ public class DuplicateTagTest {
         String inputJson = "{\"duplicate\": 123, \"duplicate\": 456}";
 
         try {
-            JSONObject obj = JSONObject.parse(inputJson);
+            JSONObject obj = JSONObject.parse(inputJson, true);
             fail("Exception should have been thrown");
-        } catch (IllegalArgumentException e) {
-            assertEquals("duplicate key \'duplicate\'", e.getMessage());
+        } catch (IOException e) {
+            assertEquals("Duplicate Key \'duplicate\'", e.getMessage());
         }
     }
 

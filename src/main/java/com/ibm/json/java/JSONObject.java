@@ -113,6 +113,11 @@ public class JSONObject extends HashMap  implements JSONArtifact
         return parse(isr);
     }
 
+    static public JSONObject parse(String str, boolean duplicateProtection) throws IOException {
+        StringReader strReader = new StringReader(str);
+        return new Parser(strReader, duplicateProtection).parse();
+    }
+
 
     /**
      * Create a new instance of this class. 
