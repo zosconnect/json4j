@@ -99,6 +99,11 @@ public class OrderedJSONObject extends JSONObject
         return parse(isr);
     }
 
+    static public JSONObject parse(String str, boolean duplicateProtection) throws IOException {
+        StringReader strReader = new StringReader(str);
+        return new Parser(strReader, duplicateProtection).parse(true);
+    }
+
     /**
      * Method to put a JSON'able object into the instance.  Note that the order of initial puts controls the order of serialization.  
      * Meaning that the first time an item is put into the object determines is position of serialization.  Subsequent puts with the same
