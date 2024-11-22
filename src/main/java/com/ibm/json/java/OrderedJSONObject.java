@@ -99,6 +99,14 @@ public class OrderedJSONObject extends JSONObject
         return parse(isr);
     }
 
+    /**
+     * Convert a String of JSON text into object form. 
+     * @param str The JSON string to parse into a Java Object.
+     * @param duplicateProtection Whether having duplicate keys in an object will throw an error
+     * @return The contructed JSON Object.  Note that the JSONObject will be an instance of OrderedJSONObject and as such, attribute order is maintained.
+     *
+     * @throws IOEXception Thrown if malformed JSON is read,
+     */
     static public JSONObject parse(String str, boolean duplicateProtection) throws IOException {
         StringReader strReader = new StringReader(str);
         return new Parser(strReader, duplicateProtection).parse(true);
