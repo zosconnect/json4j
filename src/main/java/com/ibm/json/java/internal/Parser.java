@@ -26,6 +26,7 @@ public class Parser
 
     private Tokenizer tokenizer;
     private Token     lastToken;
+    private boolean   duplicateProtection;
 
     /**
      * Contructor
@@ -37,6 +38,11 @@ public class Parser
         super();
 
         this.tokenizer = new Tokenizer(reader);
+    }
+
+    public Parser(Reader reader, boolean duplicateProtection) throws IOException {
+        this.tokenizer = new Tokenizer(reader);
+        this.duplicateProtection = duplicateProtection;
     }
 
     /**
@@ -111,6 +117,11 @@ public class Parser
             lastToken = tokenizer.next();
             Object val = parseValue(ordered);
 
+            if (duplicateProtection) {
+                if (result.get(key) != null) {
+                    throw new IOException("Duplicate Key \'" + key + "\'");
+                }
+            }
             result.put(key, val);
 
             if (lastToken == Token.TokenComma)

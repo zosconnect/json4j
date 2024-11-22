@@ -100,6 +100,19 @@ public class OrderedJSONObject extends JSONObject
     }
 
     /**
+     * Convert a String of JSON text into object form. 
+     * @param str The JSON string to parse into a Java Object.
+     * @param duplicateProtection Whether having duplicate keys in an object will throw an error
+     * @return The contructed JSON Object.  Note that the JSONObject will be an instance of OrderedJSONObject and as such, attribute order is maintained.
+     *
+     * @throws IOEXception Thrown if malformed JSON is read,
+     */
+    static public JSONObject parse(String str, boolean duplicateProtection) throws IOException {
+        StringReader strReader = new StringReader(str);
+        return new Parser(strReader, duplicateProtection).parse(true);
+    }
+
+    /**
      * Method to put a JSON'able object into the instance.  Note that the order of initial puts controls the order of serialization.  
      * Meaning that the first time an item is put into the object determines is position of serialization.  Subsequent puts with the same
      * key replace the existing entry value and leave serialization position alone.  For moving the position, the object must be removed, 
